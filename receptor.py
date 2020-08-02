@@ -8,7 +8,7 @@ import socket
 
 s = socket.socket()
 
-s.bind(("localhost", 9999)) 
+s.bind(("localhost", 9990)) 
 s.listen(1) 
 c, addr_socketc = s.accept() 
 
