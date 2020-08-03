@@ -18,7 +18,7 @@ def read_message():
     data = ""
     for bit in ba:
         data = data + str(int(bit))
-    return ba 
+    return data
 
 def send_safe_message(message):
     s.send(bytes(message, "utf-8"))
@@ -53,14 +53,14 @@ finalMessage = ""
 if (result == 0):
     print("El mensaje a enviar no cuenta con ningun error")
     #aqui debe ir el paso de decode hamming code
-    send_safe_message(nmsg)
+    send_safe_message(data)
 elif result == -1:
     #aqui igual debe ir paso de decode hamming code
-    send_safe_message(nmsg)
+    send_safe_message(data)
     print ("No se pudo detectar el error")
 else:
     print(result)
     finalMessage = str(result)
-    send_safe_message(finalMessage)
+    send_safe_message(data)
 
-# s.close()
+s.close()
