@@ -56,18 +56,18 @@ print(hmsg + '\n')
 nmsg = generateNoise(hmsg)
 result = Hamming.hammingCode(nmsg)
 finalMessage = ""
-send_safe_message(data)
-# if (result == 0):
-#     print("El mensaje a enviar no cuenta con ningun error")
-#     #aqui debe ir el paso de decode hamming code
-#     send_safe_message(nmsg)
-# elif result == -1:
-#     #aqui igual debe ir paso de decode hamming code
-#     send_safe_message(nmsg)
-#     print ("No se pudo detectar el error")
-# else:
-#     print(result)
-#     finalMessage = str(result)
-#     send_safe_message(finalMessage)
 
-# s.close()
+if (result == 0):
+    print("El mensaje a enviar no cuenta con ningun error")
+    #aqui debe ir el paso de decode hamming code
+    send_safe_message(data)
+elif result == -1:
+    #aqui igual debe ir paso de decode hamming code
+    send_safe_message(data)
+    print ("No se pudo detectar el error")
+else:
+    print(result)
+    finalMessage = str(result)
+    send_safe_message(data)
+
+s.close()
