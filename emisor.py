@@ -7,6 +7,8 @@ import socket
 import math
 from Hamming import *
 from bitarray import bitarray
+from zlib import crc32
+
 s = socket.socket()
 s.connect(("localhost", 9990))
 
@@ -18,12 +20,12 @@ def read_message():
     data = ""
     for bit in ba:
         data = data + str(int(bit))
-    return ba 
+    return data
 
 def send_safe_message(message):
     s.send(bytes(message, "utf-8"))
 
-def generateNoice(message):
+def generateNoise(message):
     x = len(message)
     print(x)
     if (x < 100):
@@ -44,23 +46,28 @@ def generateNoice(message):
         return str("".join(s))
  
 data = read_message()
+# para CRC32 checksum
+f_checksum = open("checksum.txt", "w")
+print(crc32(data.encode()))
+f_checksum.write(str(crc32(data.encode())))
+# para verificación de Hamming 
 hmsg = Hamming.hammingMessage(data)
 print(hmsg + '\n')
-nmsg = generateNoice(hmsg)
+nmsg = generateNoise(hmsg)
 result = Hamming.hammingCode(nmsg)
 finalMessage = ""
-
-if (result == 0):
-    print("El mensaje a enviar no cuenta con ningun error")
-    #aqui debe ir el paso de decode hamming code
-    send_safe_message(nmsg)
-elif result == -1:
-    #aqui igual debe ir paso de decode hamming code
-    send_safe_message(nmsg)
-    print ("No se pudo detectar el error")
-else:
-    print(result)
-    finalMessage = str(result)
-    send_safe_message(finalMessage)
+send_safe_message(data)
+# if (result == 0):
+#     print("El mensaje a enviar no cuenta con ningun error")
+#     #aqui debe ir el paso de decode hamming code
+#     send_safe_message(nmsg)
+# elif result == -1:
+#     #aqui igual debe ir paso de decode hamming code
+#     send_safe_message(nmsg)
+#     print ("No se pudo detectar el error")
+# else:
+#     print(result)
+#     finalMessage = str(result)
+#     send_safe_message(finalMessage)
 
 # s.close()
