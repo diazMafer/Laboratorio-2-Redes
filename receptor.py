@@ -5,7 +5,6 @@ Autores: Ana Hernandez y Maria Fernanda López
 """
 
 import socket        
-from Fletcher import *      
 from bitarray import bitarray
 from zlib import crc32
 
