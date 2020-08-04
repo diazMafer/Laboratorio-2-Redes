@@ -14,29 +14,32 @@ from zlib import crc32
 def fletcher_checksum(message):
     checksum = crc32(message)
     f_check = open("checksum.txt", "r")
-    checksum_sent = f_check.read()
-    if checksum != checksum_sent:
+    checksum_sent = f_check.readline()
+    f_check.close()
+    print('checksum sent ', checksum_sent, ' checksum read ', checksum)
+    if str(checksum) != str(checksum_sent):
         return False
     return True
 
 def receive_safe_message_fc(message):
     has_errors = fletcher_checksum(message)
     # intentar decodificar 
-    # try:
-    #     sent_text = (message).decode()
-    # except:
-    #     # sent_text = unicode(bitarray(message).tobytes(), errors='ignore')
-    #     # sent_text = bitarray(message).tobytes().decode('cp1252')
-    #     sent_text = (message).decode()
+    try:
+        sent_text = bitarray(message.decode()).tobytes().decode()
+    except:
+        # sent_text = unicode(bitarray(message).tobytes(), errors='ignore')
+        # sent_text = bitarray(message).tobytes().decode('cp1252')
+        sent_text = bitarray(message.decode('cp1252')).tobytes().decode('cp1252')
     # sent_text = bitarray(message).tobytes().decode('utf-8')
-    sent_text = (message).decode()
+    # print('message ', message, ' type ', type(message), ' decoded msg ', bitarray(message.decode()).tobytes())
+    # sent_text = bitarray(message.decode()).tobytes().decode()
     return [has_errors, sent_text]
 
 def receive_message(msg):
     # if true -> message has no errors
     # if false -> message has errors
     has_errors, rec_msg = receive_safe_message_fc(msg)
-    if not has_errors:
+    if has_errors == False:
         print("El mensaje enviado fue recibido con errores.")
         print("Mensaje recibido: ", rec_msg)
     else:

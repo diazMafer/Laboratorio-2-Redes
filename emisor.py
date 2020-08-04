@@ -50,6 +50,7 @@ data = read_message()
 f_checksum = open("checksum.txt", "w")
 print(crc32(data.encode()))
 f_checksum.write(str(crc32(data.encode())))
+f_checksum.close()
 # para verificación de Hamming 
 hmsg = Hamming.hammingMessage(data)
 print(hmsg + '\n')
@@ -60,14 +61,14 @@ finalMessage = ""
 if (result == 0):
     print("El mensaje a enviar no cuenta con ningun error")
     #aqui debe ir el paso de decode hamming code
-    send_safe_message(data)
+    send_safe_message(nmsg)
 elif result == -1:
     #aqui igual debe ir paso de decode hamming code
-    send_safe_message(data)
+    send_safe_message(nmsg)
     print ("No se pudo detectar el error")
 else:
     print(result)
     finalMessage = str(result)
-    send_safe_message(data)
+    send_safe_message(nmsg)
 
 s.close()
