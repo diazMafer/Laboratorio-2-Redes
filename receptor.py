@@ -9,7 +9,6 @@ from Fletcher import *
 from bitarray import bitarray
 from zlib import crc32
 
-# recibido = '010100001101111011011000110000100100001001110011011011110111100100100000001100001011010110011000000100'
 
 def fletcher_checksum(message):
     checksum = crc32(message)
