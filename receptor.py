@@ -47,21 +47,23 @@ def decode_message(message):
     # sent_text = bitarray(message.decode()).tobytes().decode()
     return sent_text
 
-def receive_message(msg, hmcode):
+def receive_message(msg, method):
     # if true -> message has no errors
     # if false -> message has errors
-    has_errors, rec_msg = receive_safe_message_fc(msg)
-    if has_errors == False:
-        print("El mensaje enviado fue recibido con errores.")
-        result = hammingCorrection(list(hmcode))
+    if method == "c":
+        has_errors, rec_msg = receive_safe_message_fc(msg)
+        if has_errors == False:
+            print("El mensaje enviado fue recibido con errores.")
+            print("Mensaje recibido: ", rec_msg)
+        else:
+            print("El mensaje enviado fue recibido correctamente.")
+            print("Mensaje recibido: ", rec_msg)
+    else:
+        result = hammingCorrection(list(msg))
         finalMessage = ' '.join(map(str, result)) 
         rec_msg = decode_message((finalMessage.replace(" ", "")).encode())
         print("Mensaje recibido: ", rec_msg)
-    else:
-        result = hammingCorrection(list(hmcode))
-        finalMessage = ' '.join(map(str, result)) 
-        print("El mensaje enviado fue recibido correctamente.")
-        print("Mensaje recibido: ", rec_msg)
+
 
 s = socket.socket()
 
@@ -76,14 +78,13 @@ recibido = c.recv(1024)
 
 data = recibido.decode('utf-8').split('/')
 
-message = data[0]
-hmcode = data[1]
+method = data[0]
+message = data[1]
 
-print(message + '\n')
-
-print(hmcode + '\n')
-
-receive_message(message.encode(), hmcode)
+if (method == "h"):
+    receive_message(message, method)
+else:
+    receive_message(message.encode(), method)
 
 c.close()
 s.close()

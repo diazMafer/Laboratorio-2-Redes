@@ -20,10 +20,7 @@ def read_message():
     for bit in ba:
         data = data + str(int(bit))
 
-    hmsg = hammingCodes(data)
-    result = hammingCorrection(hmsg)
-    finalMessage = ' '.join(map(str, result)) 
-    return finalMessage.replace(" ", "") 
+    return data
 
 def send_safe_message(message):
     s.send(bytes(message, "utf-8"))
@@ -32,39 +29,36 @@ def generateNoise(message):
     print("genereando ruido ....")
     x = len(message)
     if (x < 100):
-        print("me sali")
         return message
     else:
         count = math.floor(x/100)
         s = list(message)
-        print("hola")
         for z in range(0, count):
             c = z * 100
 
             if (s[c] == "0"):
-                print("alo")
                 s[c] = "1"
             else:
-                print("0")
                 s[c] = "0"
                 
         return str("".join(s))
  
-data = read_message()
+def checkHamming():
+    data = read_message()
+    hmsg = hammingCodes(data)
+    lstring = ' '.join(map(str, hmsg)) 
+    lnmsg = generateNoise(lstring)
+    fmessage = 'h' + '/' + lnmsg.replace(" ", "")
+    send_safe_message(fmessage)
+    s.close()
 
-# para CRC32 checksum
-f_checksum = open("checksum.txt", "w")
-f_checksum.write(str(crc32(data.encode())))
-f_checksum.close()
-
-hmsg = hammingCodes(data)
-lstring = ' '.join(map(str, hmsg)) 
-lnmsg = generateNoise(lstring)
-nmsg = generateNoise(data)
-
-fmessage = nmsg + '/' + lnmsg.replace(" ", "")
-
-send_safe_message(fmessage)
-
-
-s.close()
+def checkSum():
+    data = read_message()
+    # para CRC32 checksum
+    f_checksum = open("checksum.txt", "w")
+    f_checksum.write(str(crc32(data.encode())))
+    f_checksum.close()
+    nmsg = generateNoise(data)
+    fmessage = 'c' + '/' + nmsg
+    send_safe_message(fmessage)
+    s.close()
