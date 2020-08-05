@@ -23,9 +23,13 @@ crc_vals = []
 crc_times = []
 for i in range(30):
     line = test_crc.readline().split(";")
-    crc_vals.append(line[0])
-    crc_times.append(line[1])
-
+    print('line', line)
+    try:
+        crc_vals.append(line[0])
+        crc_times.append(line[1])
+    except:
+        continue
+test_crc.close()
 # comparacion de cuantos errores detecto que eran errores
 wrong = 0
 avg_time = 0
@@ -42,7 +46,6 @@ print('Incorrectly detected:', str(wrong))
 print('Correctly detected:', str(30-wrong))
 print('Accuracy:', str(((30-wrong)/30)*100) + '%')
 print('---------------------------------------------------')
-test_crc.close()
 
 #stats para Hamming
 test_ham = open('results_ham.txt', 'r')

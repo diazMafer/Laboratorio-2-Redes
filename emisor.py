@@ -28,7 +28,7 @@ def send_safe_message(message):
     s.send(bytes(method, "utf-8") + bytes(msg, "utf-8"))
 
 def generateNoise(message):
-    print("genereando ruido ....")
+    # print("genereando ruido ....")
     x = len(message)
     if (x < 100):
         return message
