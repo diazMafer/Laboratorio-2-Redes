@@ -40,11 +40,9 @@ print('Max time:', max(crc_times))
 print('Avg time:', str(avg_time/30))
 print('Incorrectly detected:', str(wrong))
 print('Correctly detected:', str(30-wrong))
-print('Accuracy:', str((wrong/30)*100) + '%')
+print('Accuracy:', str(((30-wrong)/30)*100) + '%')
 print('---------------------------------------------------')
 test_crc.close()
-
-
 
 #stats para Hamming
 test_ham = open('results_ham.txt', 'r')
@@ -68,7 +66,7 @@ print('Max time:', max(ham_times))
 print('Avg time:', str(avg_time/30))
 print('Incorrectly detected:', str(wrong))
 print('Correctly detected:', str(30-wrong))
-print('Accuracy:', str((wrong/30)*100) + '%')
+print('Accuracy:', str(((30-wrong)/30)*100) + '%')
 print('---------------------------------------------------')
     
 test_ham.close()
