@@ -8,6 +8,7 @@ import math
 from Hamming import *
 from bitarray import bitarray
 from zlib import crc32
+import time
 
 s = socket.socket()
 s.connect(("localhost", 9990))
@@ -59,6 +60,7 @@ def checkSum():
     f_checksum = open("checksum.txt", "w")
     f_checksum.write(str(crc32(data.encode())))
     f_checksum.close()
+    time.sleep(2)
     nmsg = generateNoise(data.encode())
     fmessage = 'c' + '/' + nmsg
     send_safe_message(fmessage)

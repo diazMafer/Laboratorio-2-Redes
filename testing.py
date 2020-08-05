@@ -6,7 +6,7 @@ sentences = []
 for i in range(30): 
     sentences.append(s.readline()) 
 
-results = [ True for i in range(10) ] + [ False for i in range(20) ]
+results = [ True for i in range(11) ] + [ False for i in range(19) ]
 
 # test CRC32
 for msg in sentences:
@@ -22,11 +22,11 @@ test_crc = open('results_crc.txt', 'r')
 crc_vals = []
 crc_times = []
 for i in range(30):
-    line = test_crc.readline().split(";")
+    line = test_crc.readline()[:-1].split(";")
     print('line', line)
     try:
         crc_vals.append(line[0])
-        crc_times.append(line[1])
+        crc_times.append(float(line[1]))
     except:
         continue
 test_crc.close()
@@ -52,9 +52,9 @@ test_ham = open('results_ham.txt', 'r')
 ham_str = []
 ham_times = []
 for i in range(30):
-    line = test_crc.readline().split(";")
+    line = test_crc.readline()[:-1].split(";")
     ham_str.append(line[0])
-    ham_times.append(line[1])
+    ham_times.append(float(line[1]))
 # comparacion de cuantos errores detecto que eran errores
 wrong = 0
 avg_time = 0
