@@ -104,12 +104,16 @@ def hammingCorrection(data):
 			errorthBit+=k # to check even parity summing up all the elements in sublist and if summ is even than even parity else odd parity
 		i+=1
 	if errorthBit>=1:
-		print ("Error en bit  ",errorthBit," bit después de corregir " )
 		#toggle the corrupted bit
-		if list1[int(errorthBit-1)]=='0' or list1[int(errorthBit-1)]==0:
-			list1[int(errorthBit-1)]=1
+		if (errorthBit > len(list1)):
+			print ("El mensaje cuenta con un error" + '\n')
+			print("No se pudo corregir el error")
 		else:
-			list1[int(errorthBit-1)]=0
+			print ("Error en bit  ",errorthBit," bit después de corregir " )
+			if list1[int(errorthBit-1)]=='0' or list1[int(errorthBit-1)]==0:
+				list1[int(errorthBit-1)]=1
+			else:
+				list1[int(errorthBit-1)]=0
 	else:
 		print ("El mensaje a enviar no cuenta con ningun error")
 	list2=list()

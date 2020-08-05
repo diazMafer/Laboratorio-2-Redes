@@ -69,8 +69,7 @@ def exit_send():
 
 def test_hamming(msg):
     ba = bitarray()
-    message = msg
-    ba.frombytes(message.encode('utf-8'))
+    ba.frombytes(msg.encode('utf-8'))
     data = ""
     for bit in ba:
         data = data + str(int(bit))
