@@ -23,7 +23,9 @@ def read_message():
     return data
 
 def send_safe_message(message):
-    s.send(bytes(message, "utf-8"))
+    msg = message.split("/")[1]
+    method = message.split("/")[0] + "/"
+    s.send(bytes(method, "utf-8") + bytes(msg, "utf-8"))
 
 def generateNoise(message):
     print("genereando ruido ....")
@@ -57,10 +59,37 @@ def checkSum():
     f_checksum = open("checksum.txt", "w")
     f_checksum.write(str(crc32(data.encode())))
     f_checksum.close()
-    nmsg = generateNoise(data)
+    nmsg = generateNoise(data.encode())
     fmessage = 'c' + '/' + nmsg
     send_safe_message(fmessage)
 
 def exit_send():
     s.send(bytes('exit', "utf-8"))
     s.close()
+
+def test_hamming(msg):
+    ba = bitarray()
+    message = msg
+    ba.frombytes(message.encode('utf-8'))
+    data = ""
+    for bit in ba:
+        data = data + str(int(bit))
+    hmsg = hammingCodes(data)
+    lstring = ' '.join(map(str, hmsg)) 
+    lnmsg = generateNoise(lstring)
+    fmessage = 'h' + '/' + lnmsg.replace(" ", "")
+    send_safe_message(fmessage)
+
+def test_crc32(msg):
+    ba = bitarray()
+    message = msg
+    ba.frombytes(message.encode('utf-8'))
+    data = ""
+    for bit in ba:
+        data = data + str(int(bit))
+    f_checksum = open("checksum.txt", "w")
+    f_checksum.write(str(crc32(data.encode())))
+    f_checksum.close()
+    nmsg = generateNoise(data)
+    fmessage = 'c' + '/' + nmsg
+    send_safe_message(fmessage)
