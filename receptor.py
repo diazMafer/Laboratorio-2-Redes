@@ -93,23 +93,26 @@ while True:
         continue
     
     data = recibido.decode('utf-8').split('/')
-    method = ""
+    method = data[0]
     message = ""
     close = False
-    if(len(data) > 2):
-        method = data[0]
-        message = data[1].replace('h', '')
-        close = True
-      
-    else:
-        method = data[0]
-        message = data[1]
-
     if (method == "h"):
+        if(len(data) > 2):
+            message = data[1].replace('h', '')
+            close = True
+        else:
+            method = data[0]
+            message = data[1]
         receive_message(message, method)
         if (close):
             break
     else:
+        if(len(data) > 2):
+            message = data[1].replace('c', '')
+            close = True
+        else:
+            method = data[0]
+            message = data[1]
         receive_message(message.encode(), method)
         if (close):
             break
