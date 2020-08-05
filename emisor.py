@@ -50,7 +50,6 @@ def checkHamming():
     lnmsg = generateNoise(lstring)
     fmessage = 'h' + '/' + lnmsg.replace(" ", "")
     send_safe_message(fmessage)
-    s.close()
 
 def checkSum():
     data = read_message()
@@ -61,4 +60,7 @@ def checkSum():
     nmsg = generateNoise(data)
     fmessage = 'c' + '/' + nmsg
     send_safe_message(fmessage)
+
+def exit_send():
+    s.send(bytes('exit', "utf-8"))
     s.close()

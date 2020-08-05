@@ -73,18 +73,22 @@ c, addr_socketc = s.accept()
 
 print("Conexion desde", addr_socketc)
 
+exit_str = bytes('exit', 'utf-8')
 # recibir_objeto
-recibido = c.recv(1024) 
-
-data = recibido.decode('utf-8').split('/')
-
-method = data[0]
-message = data[1]
-
-if (method == "h"):
-    receive_message(message, method)
-else:
-    receive_message(message.encode(), method)
+while True:
+    recibido = c.recv(1024) 
+    # print("recv", recibido)
+    if recibido == exit_str:
+        break
+    elif recibido == ''.encode():
+        continue
+    data = recibido.decode('utf-8').split('/')
+    method = data[0]
+    message = data[1]
+    if (method == "h"):
+        receive_message(message, method)
+    else:
+        receive_message(message.encode(), method)
 
 c.close()
 s.close()

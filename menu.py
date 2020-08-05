@@ -5,10 +5,8 @@ import os
 def menu():
 	print ("Selecciona un algoritmo a utilizar")
 	print ("\t1. Corrector - Hamming Code")
-	print ("\t2. Verificador - Check Sum")
+	print ("\t2. Verificador - CRC32")
 	print ("\t3. Salir")
-
-
 
 while True:
 	# Mostramos el menu
@@ -22,6 +20,7 @@ while True:
 	elif opcionMenu=="2":
 		checkSum()
 	elif opcionMenu=="3":
+		exit_send()
 		break
 	else:
 		print ("")
