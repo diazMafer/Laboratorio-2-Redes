@@ -104,8 +104,7 @@ while True:
             method = data[0]
             message = data[1]
         receive_message(message, method)
-        if (close):
-            break
+        
     else:
         if(len(data) > 2):
             message = data[1].replace('c', '')
@@ -114,8 +113,7 @@ while True:
             method = data[0]
             message = data[1]
         receive_message(message.encode(), method)
-        if (close):
-            break
+        
 
 test_ham.close()
 test_crc.close()
