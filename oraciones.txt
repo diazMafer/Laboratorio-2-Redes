@@ -1,3 +1,13 @@
+Perro
+Manzana
+Cafe
+Ropa
+Mesa
+Cuero
+Azul
+Arbol
+Vaso
+Caja
 Encuentro interesante que haya dicho eso.
 Es una colosal susceptibilidad y alguien simplemente exploto
 Un piano misteriosamente aparecio en mi salon, ayer por la noche
@@ -17,14 +27,3 @@ Proin commodo vulputate molestie. Sed augue enim, scelerisque et magna vitae, ti
 Proin a venenatis lorem, vestibulum congue mi. Maecenas dui nisi, tristique nec ligula sit amet, tincidunt laoreet orci. Cras iaculis velit vel turpis mattis, in.
 Vivamus sollicitudin odio at nisi pretium, sit amet tristique risus suscipit. Phasellus mi est, pulvinar et risus eget, sagittis bibendum nunc. Vestibulum ultrices porta eros.
 Nullam quis eros at diam vulputate scelerisque a sed orci. Sed ultrices, mauris sit amet faucibus vulputate, quam ex pulvinar velit, eu mollis massa velit.
-Quisque quis diam et ligula tempus sollicitudin. Nam dignissim cursus augue. Vestibulum viverra ex mauris, id iaculis dui maximus sed. Quisque rutrum mi id lorem.
-Algunas observaciones relacionadas con las matematicas los llevaron a tal conclusion, como la posibilidad de convertir la armonia musical en una relacion numerica: descubrieron que las notas de las diferentes cuerdas de la lira se podian medir numericamente en funcion de su longitud relativa. Por otro lado, no solo las cosas se dividen en numeros, sino que los numeros mismos se pueden dividir en lo par y lo impar
-Consiste en que las franjas tipicas del espectro de los diversos elementos quimicos conocidos, presentes en todo el universo, manifiestan un desplazamiento hacia el rojo, es decir, un aumento de la longitud de onda o una disminucion de la frecuencia con respecto a sus valores normales
-Mauris sollicitudin nunc nibh, eu placerat augue dictum eu. Aliquam vestibulum at elit at pharetra. Sed sit amet iaculis lectus. Etiam commodo purus id dui condimentum sagittis. Pellentesque consectetur ligula id placerat placerat. Vestibulum ac aliquam dolor. Duis id viverra neque, in faucibus justo
-Vivamus elementum mi sit amet leo scelerisque, non pharetra neque vestibulum. Duis fringilla, turpis et eleifend viverra, mauris eros rhoncus ipsum, sit amet sollicitudin nibh metus ac enim. Praesent et faucibus elit. Morbi ornare eros sapien. Nunc velit ex, lacinia eget sodales eu, congue nec nibh. Duis nec purus rhoncus, rhoncus elit nec, tristique odio. Duis accumsan lorem lorem
-Donec egestas ultrices tellus non feugiat. Quisque blandit sollicitudin urna, in suscipit mauris vestibulum eu. Integer sit amet bibendum mi. Sed ut dapibus sem. Donec sed quam nec ipsum efficitur pretium a vel dolor. Suspendisse potenti. Donec ut elit enim.
-In semper iaculis lacinia. Suspendisse vehicula tellus nibh, quis auctor ipsum laoreet vel. Nulla nec tellus non justo condimentum condimentum eu et magna. In luctus tincidunt nisi, id placerat enim laoreet a. Aliquam nec mi massa. Vestibulum blandit, turpis ut.
-Donec at feugiat nisl. Aliquam fermentum nec nisi in pulvinar. Proin aliquet arcu tristique ante cursus tempus. Proin gravida vel nulla ac consequat. In hac habitasse platea dictumst. Duis suscipit, arcu vitae aliquet condimentum, erat dolor molestie magna, eu placerat.
-Fusce a commodo neque. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae Nam nec neque vel risus ullamcorper pharetra. Integer aliquet massa felis, ut fermentum nisi rhoncus sit amet. Suspendisse eu rutrum justo. Aliquam purus.
-Praesent orci mauris, pharetra a interdum at, porttitor ut est. Nulla pellentesque arcu sit amet sodales tristique. Vestibulum a odio vitae nunc malesuada ultrices eget sed lorem. Nunc eu pretium mauris. Duis enim nunc, consequat et nisl et, lobortis venenatis.
-Donec ut diam pulvinar, ultricies lectus at, bibendum sem. Vivamus nec ultrices ex, non placerat augue. Sed quis nibh tristique, laoreet ipsum sed, placerat velit. Aenean vel scelerisque est, vel porta sapien. Nullam vitae massa vel magna aliquam feugiat vel.
