@@ -1,6 +1,7 @@
 Perro
 Manzana
 Cafe
+Ropa
 Mesa
 Cuero
 Azul

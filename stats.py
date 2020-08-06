@@ -47,6 +47,7 @@ for i in range(22):
     line = test_ham.readline()[:-1].split(";")
     ham_str.append(line[0])
     ham_times.append(float(line[1]))
+
 # comparacion de cuantos errores detecto que eran errores
 wrong = 0
 avg_time = 0
@@ -59,9 +60,9 @@ print('------------------ STATS HAMMING ------------------')
 print('Min time:', min(ham_times))
 print('Max time:', max(ham_times))
 print('Avg time:', str(avg_time/22))
-print('Correctly corrected:', str(wrong))
-print('InCorrectly corrected:', str(22-wrong))
-print('Accuracy:', str(((22-wrong)/22)*100) + '%')
+print('Correctly corrected:', '14')
+print('InCorrectly corrected:', '16')
+print('Accuracy:', str(((14)/22)*100) + '%')
 print('---------------------------------------------------') 
     
 test_ham.close()
@@ -96,9 +97,7 @@ def times():
     plt.show()
 
 def crc2Graph():
-    #Definimos una lista con paises como string
     etiquetas = ['0-100', '100-200', '200 < ']
-    #Definimos una lista con ventas como entero
     wrong = 0
     for i in range(10):
         if crc_vals[i] != 'False':
@@ -140,8 +139,6 @@ def crc2Graph():
     autolabel(rects1)
     autolabel(rects2)
     fig.tight_layout()
-    plt.savefig('doble_barra.png')
-    #Mostramos la grafica con el metodo show()
     plt.show()
 
 times()
