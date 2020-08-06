@@ -3,11 +3,12 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
+SENTENCES = 25
 # stats para CRC32
 test_crc = open('results_crc.txt', 'r')
 crc_vals = []
 crc_times = []
-for i in range(30):
+for i in range(SENTENCES):
     line = test_crc.readline()[:-1].split(";")
     try:
         crc_vals.append(line[0])
@@ -19,18 +20,19 @@ test_crc.close()
 wrong = 0
 avg_time = 0
 
+results = [ True for i in range(11) ] + [ False for i in range(19) ]
 for i in range(len(crc_times)):
-    if crc_vals[i] != 'False':
+    if crc_vals[i] != str(results[i]):
         wrong += 1
     avg_time += crc_times[i]
 
 print('------------------- STATS CRC32 -------------------')
 print('Min time:', min(crc_times))
 print('Max time:', max(crc_times))
-print('Avg time:', str(avg_time/30))
+print('Avg time:', str(avg_time/SENTENCES))
 print('Correctly detected:', str(wrong))
-print('InCorrectly detected:', str(30-wrong))
-print('Accuracy:', str(((30-wrong)/30)*100) + '%')
+print('Incorrectly detected:', str(SENTENCES-wrong))
+print('Accuracy:', str(((SENTENCES-wrong)/SENTENCES)*100) + '%')
 print('---------------------------------------------------')
 
 #stats para Hamming
@@ -61,7 +63,7 @@ print('Min time:', min(ham_times))
 print('Max time:', max(ham_times))
 print('Avg time:', str(avg_time/22))
 print('Correctly corrected:', '14')
-print('InCorrectly corrected:', '16')
+print('Incorrectly corrected:', '16')
 print('Accuracy:', str(((14)/22)*100) + '%')
 print('---------------------------------------------------') 
     
@@ -99,23 +101,23 @@ def times():
 def crc2Graph():
     etiquetas = ['0-100', '100-200', '200 < ']
     wrong = 0
-    for i in range(10):
-        if crc_vals[i] != 'False':
+    for i in range(11):
+        if crc_vals[i] != 'True':
             wrong += 1
 
     wrong1 = 0
-    for i in range(11,20):
+    for i in range(11,15):
         if crc_vals[i] != 'False':
             wrong1 += 1
     
     wrong2 = 0
-    for i in range(21,30):
+    for i in range(15,SENTENCES):
         if crc_vals[i] != 'False':
             wrong2 += 1
 
    
-    res1 = [wrong, wrong1, wrong2]
-    res2 = [int(10-wrong), int(10-wrong1), int(10-wrong2)]
+    res2 = [wrong, wrong1, wrong2] # cuantas malas tuvo 
+    res1 = [int(11-wrong), int(3-wrong1), int(12-wrong2)] # cuantas correctas
 
     x = np.arange(len(etiquetas))
     width = 0.35
