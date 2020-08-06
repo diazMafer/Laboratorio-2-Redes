@@ -66,10 +66,8 @@ def receive_message(msg, method):
             # test
             test_res_crc += ('True;' + str(time.time() - t0) + '\n')
     else:
-        print('\tMESSAGE BEFORE HAMM', msg)
         result = hammingCorrection(list(msg))
         finalMessage = ' '.join(map(str, result)) 
-        print('\tFINAL MESSAGE', finalMessage)
         rec_msg = decode_message((finalMessage.replace(" ", "")).encode())
         print("Mensaje recibido: ", rec_msg)
         test_res_hm += (rec_msg + ';' + str(time.time() - t0) + '\n')
@@ -87,7 +85,7 @@ test_res_crc = ''
 test_res_hm = ''
 exit_str = bytes('exit', 'utf-8')
 # recibir_objeto
-to_receive = 60
+to_receive = 51
 while to_receive >=0:
     recibido = c.recv(1594)
     if recibido == exit_str:
